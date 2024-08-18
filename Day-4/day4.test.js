@@ -20,4 +20,23 @@
 
 const { createCounter2 } = require("./day4");
 
-describe("createCounter2", () => {});
+describe("Counter II", () => {
+  test("Example 1: should handle increment, reset, and decrement correctly with initial value 5", () => {
+    const counter = createCounter2(5);
+    const results = [
+      counter.increment(), // Should return 6
+      counter.reset(), // Should return 5
+      counter.decrement(), // Should return 4
+    ];
+    expect(results).toEqual([6, 5, 4]);
+  });
+
+  test("Example 2: should handle multiple increments, decrement, and resets with initial value 0", () => {
+    const counter2 = createCounter2(0);
+    expect(counter2.increment()).toBe(1); // 1
+    expect(counter2.increment()).toBe(2); // 2
+    expect(counter2.decrement()).toBe(1); //
+    expect(counter2.reset()).toBe(0); // 0
+    expect(counter2.reset()).toBe(0); // 0
+  });
+});

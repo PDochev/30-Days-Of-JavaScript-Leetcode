@@ -6,7 +6,7 @@
 // decrement() reduces the current value by 1 and then returns it.
 // reset() sets the current value to init and then returns it.
 
-var createCounter2 = function (init) {
+const createCounter2 = function (init) {
   let count = init;
 
   function increment() {

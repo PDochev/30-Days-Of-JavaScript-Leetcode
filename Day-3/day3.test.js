@@ -15,7 +15,7 @@
 
 const { toBeOrNotToBe } = require("./day3");
 
-describe("expect", () => {
+describe("To Be Or Not To Be", () => {
   // Test cases for toBe method
   test("should return true when values are equal (toBe)", () => {
     const result = toBeOrNotToBe(5).toBe(5);

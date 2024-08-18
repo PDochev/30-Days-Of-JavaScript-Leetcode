@@ -2,7 +2,7 @@
 
 const { createHelloWorld } = require("./day1");
 
-describe("createHelloWorld", () => {
+describe("Create Hello World Function", () => {
   test('should return "Hello World" when called with no arguments', () => {
     const f = createHelloWorld();
     expect(f()).toBe("Hello World");
