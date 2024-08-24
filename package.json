@@ -2,9 +2,8 @@
   "name": "30-days-of-javascript-leetcode",
   "version": "1.0.0",
   "main": "index.js",
-
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "keywords": [],
   "author": "",

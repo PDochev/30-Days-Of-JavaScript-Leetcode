@@ -24,7 +24,7 @@ describe("Add Two Promises", () => {
     expect(result).toBe(7);
   });
 
-  test("Example 2: resolves with the sum of two numbers (Example 2)", async () => {
+  test("Example 2: resolves with the sum of two numbers", async () => {
     const promise1 = new Promise((resolve) =>
       setTimeout(() => resolve(10), 50)
     );
