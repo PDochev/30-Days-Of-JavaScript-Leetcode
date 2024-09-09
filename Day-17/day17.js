@@ -10,34 +10,66 @@
 
 // count(): returns the count of un-expired keys.
 
-const TimeLimitedCache = function () {
-  this.cache = new Map();
-};
+// Function implementation
+// const TimeLimitedCache = function () {
+//   this.cache = new Map();
+// };
 
-TimeLimitedCache.prototype.set = function (key, value, duration) {
-  const alreadyExist = this.cache.get(key);
-  if (alreadyExist) {
-    clearTimeout(alreadyExist.timeoutId);
+// TimeLimitedCache.prototype.set = function (key, value, duration) {
+//   const alreadyExist = this.cache.get(key);
+//   if (alreadyExist) {
+//     clearTimeout(alreadyExist.timeoutId);
+//   }
+
+//   const timeoutId = setTimeout(() => {
+//     this.cache.delete(key);
+//   }, duration);
+
+//   this.cache.set(key, { value, timeoutId });
+//   return Boolean(alreadyExist);
+// };
+
+// TimeLimitedCache.prototype.get = function (key) {
+//   if (this.cache.has(key)) {
+//     return this.cache.get(key).value;
+//   }
+
+//   return -1;
+// };
+
+// TimeLimitedCache.prototype.count = function () {
+//   return this.cache.size;
+// };
+
+// Class Implementation
+class TimeLimitedCache {
+  cache = new Map();
+
+  set(key, value, duration) {
+    const alreadyExist = this.cache.get(key);
+    if (alreadyExist) {
+      clearTimeout(alreadyExist.timeoutId);
+    }
+
+    const timeoutId = setTimeout(() => {
+      this.cache.delete(key);
+    }, duration);
+
+    this.cache.set(key, { value, timeoutId });
+    return Boolean(alreadyExist);
   }
 
-  const timeoutId = setTimeout(() => {
-    this.cache.delete(key);
-  }, duration);
+  get(key) {
+    if (this.cache.has(key)) {
+      return this.cache.get(key).value;
+    }
 
-  this.cache.set(key, { value, timeoutId });
-  return Boolean(alreadyExist);
-};
-
-TimeLimitedCache.prototype.get = function (key) {
-  if (this.cache.has(key)) {
-    return this.cache.get(key).value;
+    return -1;
   }
 
-  return -1;
-};
-
-TimeLimitedCache.prototype.count = function () {
-  return this.cache.size;
-};
+  count() {
+    return this.cache.size;
+  }
+}
 
 module.exports = TimeLimitedCache;
