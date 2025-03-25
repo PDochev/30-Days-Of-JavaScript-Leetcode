@@ -1,5 +1,5 @@
 // Day 11:
-// Memoize
+// Memoize (Caching Function Results)
 
 // Given a function fn, return a memoized version of that function.
 

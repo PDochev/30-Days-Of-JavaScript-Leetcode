@@ -7,7 +7,7 @@
 
 // You may assume each function in the array accepts one integer as input and returns one integer as output.
 
-var compose = function (functions) {
+const compose = function (functions) {
   //Imperative way
   return function (x) {
     for (const fn of functions.reverse()) {

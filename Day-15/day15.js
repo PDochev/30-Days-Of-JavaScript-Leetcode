@@ -7,15 +7,14 @@
 // setTimeout(cancelFn, cancelTimeMs)
 // The function fn should be called with args immediately and then called again every t milliseconds until cancelFn is called at cancelTimeMs ms.
 
+const cancellable = function (fn, args, t) {
+  fn(...args);
+  const timerId = setInterval(fn, t, ...args);
 
-const cancellable = function(fn, args, t) {
-    fn(...args)
-    const timerId = setInterval(fn, t, ...args);
-
-    const cancelFn = () => {
-        clearInterval(timerId)
-    }
-    return cancelFn;
+  const cancelFn = () => {
+    clearInterval(timerId);
+  };
+  return cancelFn;
 };
 
-module.exports = {cancellable}
+module.exports = { cancellable };
