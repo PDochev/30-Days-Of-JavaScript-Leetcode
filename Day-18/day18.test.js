@@ -50,15 +50,14 @@
 const { debounce } = require("./day18");
 
 describe("debounce function", () => {
-  // Mock timers for all tests
   beforeEach(() => {
     jest.useFakeTimers();
   });
 
-  afterEach(() => {
-    jest.clearAllTimers();
-    jest.useRealTimers();
-  });
+  // afterEach(() => {
+  //   jest.clearAllTimers();
+  //   jest.useRealTimers();
+  // });
 
   test("Example 1: Cancels first call when second occurs before timeout", () => {
     const mockFn = jest.fn();
@@ -77,6 +76,7 @@ describe("debounce function", () => {
     // Advance just enough to trigger the debounced function
     jest.advanceTimersByTime(1);
     expect(mockFn).toHaveBeenCalledTimes(1);
+    expect(mockFn).not.toHaveBeenLastCalledWith(1);
     expect(mockFn).toHaveBeenLastCalledWith(2);
   });
 
