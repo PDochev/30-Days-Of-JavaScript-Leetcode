@@ -18,18 +18,34 @@ const { toBeOrNotToBe } = require("./day3");
 describe("To Be Or Not To Be", () => {
   // Test cases for toBe method
   test("should return true when values are equal (toBe)", () => {
-    const result = toBeOrNotToBe(5).toBe(5);
-    expect(result).toBe(true); // Expecting the result of toBe to be true
+    expect(toBeOrNotToBe(5).toBe(5)).toBe(true);
+    expect(toBeOrNotToBe("hello").toBe("hello")).toBe(true);
+    expect(toBeOrNotToBe(null).toBe(null)).toBe(true);
+    expect(toBeOrNotToBe(undefined).toBe(undefined)).toBe(true);
   });
 
   test("should throw an error when values are not equal (toBe)", () => {
-    expect(() => {
-      toBeOrNotToBe(5).toBe(null); // This should throw an error
-    }).toThrow("Not Equal"); // Now you are correctly testing if the error was thrown
+    expect(() => toBeOrNotToBe(5).toBe(10)).toThrow("Not Equal");
+    expect(() => toBeOrNotToBe("hello").toBe("world")).toThrow("Not Equal");
+    expect(() => toBeOrNotToBe(null).toBe(undefined)).toThrow("Not Equal");
   });
 
   test("should return true when values are not equal (notToBe)", () => {
-    const result = toBeOrNotToBe(5).notToBe(null);
-    expect(result).toBe(true); // Expecting the result of notToBe to be true
+    expect(toBeOrNotToBe(5).notToBe(10)).toBe(true);
+    expect(toBeOrNotToBe("hello").notToBe("world")).toBe(true);
+    expect(toBeOrNotToBe(null).notToBe(undefined)).toBe(true);
+  });
+  test("should throw an error when values are equal (notToBe)", () => {
+    expect(() => toBeOrNotToBe(5).notToBe(5)).toThrow("Equal");
+    expect(() => toBeOrNotToBe("hello").notToBe("hello")).toThrow("Equal");
+    expect(() => toBeOrNotToBe(null).notToBe(null)).toThrow("Equal");
+  });
+
+  // Edge cases
+  test("should handle special JavaScript values", () => {
+    expect(toBeOrNotToBe(NaN).notToBe(NaN)).toBe(true); // NaN !== NaN in JavaScript
+    expect(() => toBeOrNotToBe(0).notToBe(-0)).toThrow("Equal");
+    expect(() => toBeOrNotToBe(-0).notToBe(0)).toThrow("Equal");
+    expect(toBeOrNotToBe(undefined).notToBe(null)).toBe(true);
   });
 });
