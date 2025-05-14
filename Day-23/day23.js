@@ -11,6 +11,8 @@
 // Please solve it without lodash's _.groupBy function.
 
 Array.prototype.groupBy = function (fn) {
+  // One line solution using Object.groupBy
+  // return Object.groupBy(this, fn);
   const obj = {};
 
   for (let i = 0; i < this.length; i++) {
